@@ -1,0 +1,33 @@
+embed-server --std-out=echo --server-config=standalone-openshift.xml
+
+echo Adicionando System Properties
+/system-property=TP_AMBIENTE:add(value="${env.TP_AMBIENTE}")
+/system-property=URL_CONTACORRENTE:add(value="${env.URL_CONTACORRENTE}")
+/system-property=URL_SERVICO_CADASTRO:add(value="${env.URL_SERVICO_CADASTRO}")
+/system-property=URL_SERVICO_RECEITA_AIX:add(value="${env.URL_SERVICO_RECEITA_AIX}")
+/system-property=URL_SERVICO_COPAF:add(value="${env.URL_SERVICO_COPAF}")
+/system-property=URL_SERVICO_SITRAM:add(value="${env.URL_SERVICO_SITRAM}")
+/system-property=URL_SERVICO_CONSEG:add(value="${env.URL_SERVICO_CONSEG}")
+/system-property=URL_SERVICO_DEBITO:add(value="${env.URL_SERVICO_DEBITO}")
+/system-property=DIR_DAE:add(value="${env.DIR_DAE}")
+/system-property=DIR_DAS:add(value="${env.DIR_DAS}")
+/system-property=DIR_GNRE:add(value="${env.DIR_GNRE}")
+/system-property=DIR_FDI:add(value="${env.DIR_FDI}")
+/system-property=DIR_RELATORIO_SATURNO:add(value="${env.DIR_RELATORIO_SATURNO}")
+/system-property=DIR_RECEITA2_DETRAN:add(value="${env.DIR_RECEITA2_DETRAN}")
+/system-property=DIR_ARQUIVOS_IPVA:add(value="${env.DIR_ARQUIVOS_IPVA}")
+/system-property=http.proxyHost:add(value="${env.http.proxyHost}")
+/system-property=http.proxyPort:add(value="${env.http.proxyPort}")
+/system-property=URL_SMTP:add(value="${env.URL_SMTP}")
+/system-property=EMAIL_SEFAZ_RECEITA_REMETENTE:add(value="${env.EMAIL_SEFAZ_RECEITA_REMETENTE}")
+/system-property=CLIENT_ID_SANTANDER:add(value="${env.CLIENT_ID_SANTANDER}")
+/system-property=CLIENT_SECRET_SANTANDER:add(value="${env.CLIENT_SECRET_SANTANDER}")
+/system-property=CHAVE_PIX_SEFAZ_CE:add(value="${env.CHAVE_PIX_SEFAZ_CE}")
+/system-property=URL_SERVICO_SANTANDER_BASE:add(value="${env.URL_SERVICO_SANTANDER_BASE}")
+
+/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=max-pool-size, value="${env.MAX_POOL_SIZE}")
+/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=min-pool-size, value="${env.MIN_POOL_SIZE}")
+
+/subsystem=undertow/server=default-server/http-listener=default:write-attribute(name=allow-unescaped-characters-in-url,value=true)
+
+quit
