@@ -2,9 +2,10 @@ embed-server --std-out=echo --server-config=standalone-openshift.xml
 
 echo Adicionando System Properties
 /system-property=TP_AMBIENTE:add(value="${env.TP_AMBIENTE}")
-/system-property=URL_CONTACORRENTE:add(value="${env.URL_CONTACORRENTE}")
+
 /system-property=http.proxyHost:add(value="${env.http.proxyHost}")
 /system-property=http.proxyPort:add(value="${env.http.proxyPort}")
+
 /system-property=URL_SMTP:add(value="${env.URL_SMTP}")
 
 
